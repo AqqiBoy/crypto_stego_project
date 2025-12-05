@@ -38,6 +38,11 @@ python -m crypto_stego_project.main extract \
 
 Use the same key and method that were used for embedding.
 
+### DCT Tips
+
+- Covers are auto-converted to truecolor RGB; prefer lossless PNGs and dimensions that are multiples of 8 for full capacity.
+- DCT embeds bits in mid-frequency coefficients to better survive mild JPEG compression; heavy recompression or resizing can still corrupt payloads.
+
 ## Experiments
 
 Run comparisons for all images in a directory:

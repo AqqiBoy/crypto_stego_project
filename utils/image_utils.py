@@ -34,6 +34,14 @@ def load_image_cv2(path: PathLike) -> np.ndarray:
     return img
 
 
+def load_image_cv2_rgb(path: PathLike) -> np.ndarray:
+    """Load an image as truecolor RGB and return BGR for cv2 workflows."""
+    with Image.open(path) as img:
+        rgb = img.convert("RGB")
+        rgb_arr = np.array(rgb, dtype=np.uint8)
+    return cv2.cvtColor(rgb_arr, cv2.COLOR_RGB2BGR)
+
+
 def save_image_cv2(arr: np.ndarray, path: PathLike) -> None:
     """Save an image using cv2 (expects BGR)."""
     success = cv2.imwrite(str(path), arr)
