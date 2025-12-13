@@ -8,11 +8,12 @@
 - `experiments/`: comparison script that batches covers, saves stego variants, and writes `comparison_results.csv`.
 
 ## Setup, Build, and Run
-- Install deps: `pip install -r requirements.txt` (Python 3.10+).
-- Embed: `python -m crypto_stego_project.main embed --method lsb --cover input.png --output stego.png --message "Hi" --key "pass"`.
-- Extract: `python -m crypto_stego_project.main extract --method lsb --stego stego.png --key "pass"`.
+- Run commands from the directory that contains the `crypto_stego_project/` folder.
+- Install deps: `pip install -r crypto_stego_project/requirements.txt` (Python 3.10+).
+- Embed: `python -m crypto_stego_project.main embed --method lsb --cover crypto_stego_project/Cover/1.png --output crypto_stego_project/Output/stego.png --message "Hi" --key "pass"`.
+- Extract: `python -m crypto_stego_project.main extract --method lsb --stego crypto_stego_project/Output/stego.png --key "pass"`.
 - DCT variant: swap `--method dct` in the above commands.
-- Experiments: `python -m crypto_stego_project.experiments.run_comparison covers/ outputs/ --key "pass" --messages "short" "longer"`.
+- Experiments: `python -m crypto_stego_project.experiments.run_comparison crypto_stego_project/Cover crypto_stego_project/Output --key "pass" --messages "short" "longer"`.
 - DCT guidance: covers are auto-converted to truecolor RGB; prefer lossless PNGs with dimensions divisible by 8 for full capacity and better bit stability.
 
 ## Coding Style & Naming

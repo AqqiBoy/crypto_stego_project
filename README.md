@@ -7,20 +7,20 @@ Educational project combining a simple custom block cipher with two steganograph
 - Python 3.10+
 - Install dependencies:
   ```bash
-  pip install -r requirements.txt
+  pip install -r crypto_stego_project/requirements.txt
   ```
 
 ## Usage
 
-All commands are run from the project root.
+All commands are run from the directory that contains the `crypto_stego_project/` folder.
 
 ### Embed
 
 ```bash
 python -m crypto_stego_project.main embed \
   --method lsb \
-  --cover path/to/cover.png \
-  --output path/to/stego.png \
+  --cover crypto_stego_project/Cover/1.png \
+  --output crypto_stego_project/Output/stego.png \
   --message "Secret text" \
   --key "your password"
 ```
@@ -32,7 +32,7 @@ For DCT-based embedding, use `--method dct`. You can also supply `--message-file
 ```bash
 python -m crypto_stego_project.main extract \
   --method lsb \
-  --stego path/to/stego.png \
+  --stego crypto_stego_project/Output/stego.png \
   --key "your password"
 ```
 
@@ -48,7 +48,7 @@ Use the same key and method that were used for embedding.
 Run comparisons for all images in a directory:
 
 ```bash
-python -m crypto_stego_project.experiments.run_comparison covers/ outputs/ --key "password" --messages "short" "longer test message"
+python -m crypto_stego_project.experiments.run_comparison crypto_stego_project/Cover crypto_stego_project/Output --key "password" --messages "short" "longer test message"
 ```
 
 The script saves stego images, JPEG-compressed variants, and a `comparison_results.csv` summarizing PSNR and BER for LSB vs. DCT.
